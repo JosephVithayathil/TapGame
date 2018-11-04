@@ -17,6 +17,6 @@ class Player(models.Model):
     """Player model."""
 
     user = models.OneToOneField(User, related_name="player_user", null=True, on_delete=models.CASCADE)
-    reply_channel = models.CharField(max_length=250, null=True, unique=True)
-    points = models.IntegerField(default=500)
+    points = models.IntegerField(default=0)
     level = models.ForeignKey(PlayerLevels, related_name="player_level", null=True, on_delete=models.CASCADE)
+    reply_channel = models.CharField(max_length=250, null=True, unique=True)

@@ -38,13 +38,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    # Local apps
-    'admin_panel',
-    'client_apis',
-
     # External apps
     'rest_framework',
     'rest_framework.authtoken',
+
+    # Local apps
+    'admin_panel',
+    'client_apis',
+    'sigma_core',
 ]
 
 MIDDLEWARE = [
