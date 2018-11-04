@@ -109,16 +109,17 @@ class CachedModelManager(models.Manager):
 
 def check_equality(value1, value2):
     """Function to check equality."""
-    try:
-        if str(value1) == str(value2):
-            return True
-        else:
-            return False
-    except Exception:
-        if value1 == value2:
-            return True
-        else:
-            return False
+    return_value = None
+    if value1 == value2:
+        return_value = True
+    else:
+        return_value = False
+        try:
+            if str(value1) == str(value2):
+                return_value = True
+        except Exception:
+            pass
+    return return_value
 
 
 def get_model_from_cache(model_name):
