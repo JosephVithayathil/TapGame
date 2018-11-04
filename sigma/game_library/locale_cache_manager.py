@@ -138,7 +138,7 @@ def get_model_from_cache(model_name):
     return model_objs
 
 
-class CustomCacheModelClass(models.Model):
+class LocaleCacheModel(models.Model):
     """Custom cache model class."""
 
     objects = CachedModelManager()
@@ -147,7 +147,7 @@ class CustomCacheModelClass(models.Model):
         """Custom save fuction to override default save fuction to clear data in cache."""
         table_name = self._meta.object_name
         cache.delete(table_name)
-        super(CustomCacheModelClass, self).save(*args, **kwargs)
+        super(LocaleCacheModel, self).save(*args, **kwargs)
 
     class Meta:
         """Meta class."""
