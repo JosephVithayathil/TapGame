@@ -7,3 +7,4 @@ class GameStatusCodes(CustomIntEnum):
     OK = 0
     ERROR = 1
     DUPLICATE_USERNAME = 2
+    AUTH_FAILED = 3

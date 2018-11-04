@@ -2,6 +2,7 @@
 from rest_framework.response import Response
 from rest_framework import viewsets, permissions
 from rest_framework.decorators import permission_classes
+from rest_framework.authtoken.models import Token
 from django.contrib.auth.models import User
 from game_library.status_codes import GameStatusCodes
 from game_library.game_enums import LevelEnum
@@ -28,7 +29,11 @@ class PlayerSignupAPI(viewsets.ViewSet):
             email=email
         )
         Player.objects.create(user=user, level=player_level)
-        return Response({"st": GameStatusCodes.OK})
+        token_key = Token.objects.create(user=user).key
+        response_data = {}
+        response_data["st"] = GameStatusCodes.OK
+        response_data["scrt_key"] = token_key
+        return Response(response_data)
 
 
 
